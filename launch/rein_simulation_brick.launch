@@ -1,0 +1,49 @@
+<launch>
+<!-- <arg name="world_file"  default="$(env GYM_RV_GAZEBO_WORLD_CIRCUIT2)"/> -->
+
+<include file="$(find gazebo_ros)/launch/empty_world.launch">
+    
+    <arg name="world_name" value="$(find jackal_rein_sim)/worlds/simple.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+
+</include>
+
+<param name="robot_description" command="$(find xacro)/xacro --inorder $(find jackal_rein_sim)/urdf/rv_jackal.urdf.xacro" />
+<!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/> -->
+<!-- <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui"/> -->
+<!-- <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/> -->
+
+<!-- <node name="rviz" pkg="rviz" type="rviz" args = "-d $(find jackal_rein_sim)/rviz/rv_jackal.rviz" required="true" /> -->
+
+<node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-param robot_description -urdf -model total -x 0.0 -y 0.0 -z 0.0" />
+
+<!-- Controller -->
+<arg name="enable_ekf" default="$(optenv ENABLE_EKF true)"/>
+
+<rosparam command="load" file="$(find jackal_rein_sim)/config/control.yaml" />
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner"
+    args="jackal_joint_publisher jackal_velocity_controller" />
+
+<!-- <group if="$(arg enable_ekf)" >
+<node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+    <rosparam command="load" file="$(find jackal_control)/config/robot_localization.yaml" />
+</node>
+</group> -->
+
+<!-- <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+<rosparam command="load" file="$(jackal_rein_sim)/config/twist_mux.yaml" />
+<remap from="cmd_vel_out" to="/cmd_vel"/>
+</node> -->
+
+<group if="$(optenv JACKAL_CONTROL_EXTRAS 0)" >
+<rosparam command="load" file="$(env JACKAL_CONTROL_EXTRAS_PATH)" />
+</group>
+
+
+</launch>
