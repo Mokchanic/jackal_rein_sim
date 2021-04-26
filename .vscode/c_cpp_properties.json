@@ -1,0 +1,37 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/blue/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/blue/catkin_ws/src/cloud/include/**",
+        "/home/blue/catkin_ws/src/ddynamic_reconfigure/include/**",
+        "/home/blue/catkin_ws/src/jackal_machine_learning/jackal_dqn/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_auto_docking/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_bumper2pc/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_controller_tutorial/include/**",
+        "/home/blue/catkin_ws/src/kobuki_core/kobuki_dock_drive/include/**",
+        "/home/blue/catkin_ws/src/kobuki_core/kobuki_driver/include/**",
+        "/home/blue/catkin_ws/src/kobuki_core/kobuki_ftdi/include/**",
+        "/home/blue/catkin_ws/src/kobuki_desktop/kobuki_gazebo_plugins/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_keyop/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_node/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_random_walker/include/**",
+        "/home/blue/catkin_ws/src/kobuki/kobuki_safety_controller/include/**",
+        "/home/blue/catkin_ws/src/kobuki_soft/kobuki_softnode/include/**",
+        "/home/blue/catkin_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/blue/catkin_ws/src/train_jackal/include/**",
+        "/home/blue/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/blue/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/blue/catkin_ws/src/usb_cam/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
